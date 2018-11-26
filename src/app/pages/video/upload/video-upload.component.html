@@ -1,0 +1,86 @@
+<div class="ui-g">
+
+  <div class="ui-g-12">
+
+    <div class="inline">
+      <p-dropdown [options]="category"
+                  [(ngModel)]="selectedCategory"
+                  placeholder="Select a Category"
+                  optionLabel="name"
+                  scrollHeight="400px"
+                  (onChange)="catChange($event)"
+                  [showClear]="true"></p-dropdown>
+    </div>
+
+    <div class="inline">
+      <p-dropdown [options]="subCategory"
+                  [(ngModel)]="selectedSubCategory"
+                  placeholder="Select a Sub Category"
+                  optionLabel="name"
+                  scrollHeight="400px"
+                  [showClear]="true"></p-dropdown>
+    </div>
+
+    <div class="inline">
+
+
+        <p-overlayPanel #op>
+
+            <h3 class="first">Video PW</h3>
+                <input type="text"
+                       pInputText
+                       [(ngModel)]="settingsService.pwInput"
+                       (ngModelChange)="valuechange($event)" />
+
+
+
+                       <h3 class="first">Category PW</h3>
+                  <input type="text"
+                         pInputText
+                         [(ngModel)]="settingsService.pwInputCat"
+                         (ngModelChange)="valuechangeCat($event)" />
+        </p-overlayPanel>
+
+        <button type="text" pButton label="Settings" (click)="op.toggle($event)"></button>
+
+    </div>
+
+    <!-- <div class="inline">
+      <span class="ui-float-label">
+        <input type="text"
+               pInputText
+               [(ngModel)]="settingsService.pwInput" (ngModelChange)="valuechange($event)"/>
+        <label for="float-input">Image PW</label>
+      </span>
+    </div>
+
+    <div class="inline">
+      <span class="ui-float-label">
+        <input type="text"
+               pInputText
+               [(ngModel)]="settingsService.pwInputCat" (ngModelChange)="valuechangeCat($event)"/>
+        <label for="float-input">Category PW</label>
+      </span>
+    </div> -->
+
+  </div>
+
+  <div class="ui-g-12">
+
+    <div *ngIf="selectedCategory?.id && selectedSubCategory?.id">Send : {{sendValue}}</div>
+
+  </div>
+
+  <div class="ui-g-12" *ngIf="selectedCategory?.id && selectedSubCategory?.id">
+    <input #fileInput type="file" class="vpinput"/>
+  </div>
+  <div class="ui-g-12" *ngIf="selectedCategory?.id && selectedSubCategory?.id">
+    <button mat-flat-button color="primary" (click)="addFile()">Add Video</button>
+  </div>
+
+</div>
+
+
+<!--
+<input #fileInput type="file"/>
+<button (click)="addFile()">Add</button> -->

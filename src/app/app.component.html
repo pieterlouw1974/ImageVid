@@ -1,0 +1,75 @@
+<ng2-slim-loading-bar color="blue"></ng2-slim-loading-bar>
+
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+
+<p-toolbar>
+    <div class="ui-toolbar-group-left">
+        <!-- <button pButton type="button" label="New" icon="pi pi-plus"></button>
+        <button pButton type="button" label="Upload" icon="pi pi-upload" class="ui-button-success"></button> -->
+        <p-menu #menu [popup]="true" [model]="items"></p-menu>
+        <button type="button" pButton icon="pi pi-bars" label="Show" (click)="menu.toggle($event)"></button>
+        <i class="pi pi-bars"></i>
+
+        <span style="padding-left: 10px;">File : {{settingsService.fileNo}} of {{settingsService.fileTot}}</span>
+        <i class="pi pi-bars"></i>
+        <span *ngIf="settingsService.showInfo">Image Name : {{settingsService.imageName}}</span>
+        <span *ngIf="settingsService.showInfo" style="padding-left: 10px;">Size : {{settingsService.imageSize}}</span>
+        <!-- <span *ngIf="settingsService.showInfo" style="padding-left: 10px;">Size : {{settingsService.imageSize}}</span> -->
+        <!-- <p-splitButton label="Save" icon="pi pi-check" [model]="items" styleClass="ui-button-warning"></p-splitButton> -->
+    </div>
+
+    <!-- <div class="ui-toolbar-group-right">
+        <button pButton type="button" icon="pi pi-search"></button>
+        <button pButton type="button" icon="pi pi-calendar" class="ui-button-success"></button>
+        <button pButton type="button" icon="pi pi-times" class="ui-button-danger"></button>
+    </div> -->
+</p-toolbar>
+
+
+
+<!-- <mat-toolbar color="primary">
+  <button mat-icon-button
+          [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+      <app-menu></app-menu>
+
+  </mat-menu>
+
+  <span *ngIf="settingsService.showInfo">Image Name : {{settingsService.imageName}}</span>
+  <span *ngIf="settingsService.showInfo" style="padding-left: 10px;">Size : {{settingsService.imageSize}}</span>
+</mat-toolbar> -->
+
+
+<router-outlet></router-outlet>
+<!-- <mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav
+               [mode]="mode.value">
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+
+        <mat-radio-group class="example-radio-group"
+                         [formControl]="mode">
+          <label>Mode:</label>
+          <mat-radio-button value="over">Over</mat-radio-button>
+          <mat-radio-button value="side">Side</mat-radio-button>
+          <mat-radio-button value="push">Push</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="ui-g-12">
+        <button mat-button
+                (click)="sidenav.toggle()">Toggle</button>
+      </div>
+
+    </div>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->

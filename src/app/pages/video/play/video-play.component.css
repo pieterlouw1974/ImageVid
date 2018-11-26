@@ -1,0 +1,10 @@
+.switchLabel {
+  padding-right: 15px;
+  float: left;
+}
+
+.inline {
+  display: inline-block;
+  padding-right: 15px;
+  padding-top: 10px;
+}

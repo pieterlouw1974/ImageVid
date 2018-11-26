@@ -1,0 +1,10 @@
+.ui-toolbar {
+  background-color: lightsteelblue !important;
+  border: 1px solid orangered !important;
+  padding: 0.271em 1em !important;
+}
+
+body .ui-menu .ui-submenu-header {
+  color: gainsboro !important;
+  background-color: slateblue !important;
+}

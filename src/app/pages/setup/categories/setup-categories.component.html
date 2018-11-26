@@ -1,0 +1,67 @@
+<mat-card>
+
+  <div class="ui-g">
+
+    <div class="ui-g-12">
+
+      <h3 class="first">Category</h3>
+
+      <p-dropdown [options]="category"
+                  [(ngModel)]="selectedCategory"
+                  placeholder="Select a Category"
+                  optionLabel="name"
+                  scrollHeight="400px"
+                  (onChange)="catChange($event)"
+                  [showClear]="true"></p-dropdown>
+
+      <input id="input"
+             type="text"
+             size="30"
+             pInputText
+             [(ngModel)]="categoryText">
+
+             <button mat-flat-button color="primary" (click)="addCat()">Add New</button>
+
+      <!-- <p-button label="Add New"
+                (click)="addCat()"></p-button> -->
+
+    </div>
+
+    <div class="ui-g-12">
+      <h3 class="first">Sub Category</h3>
+
+      <p-dropdown [options]="subCategory"
+                  [(ngModel)]="selectedSubCategory"
+                  placeholder="Select a Sub Category"
+                  optionLabel="name"
+                  scrollHeight="400px"
+                  [showClear]="true"></p-dropdown>
+
+      <input id="input"
+             type="text"
+             size="30"
+             pInputText
+             [(ngModel)]="subCategoryText">
+
+             <button mat-flat-button color="primary" (click)="addSubCat()">Add New</button>
+
+      <!-- <p-button label="Add New"
+                (click)="addSubCat()"></p-button> -->
+    </div>
+
+    <div class="ui-g-12">
+      <h3 class="first">Password</h3>
+
+      <span class="ui-float-label">
+        <input type="text"
+               pInputText
+               [(ngModel)]="settingsService.pwInputCat"
+               (ngModelChange)="valuechangeCat($event)" />
+        <label for="float-input">Category</label>
+      </span>
+
+    </div>
+
+  </div>
+
+</mat-card>

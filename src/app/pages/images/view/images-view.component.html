@@ -1,0 +1,124 @@
+<div class="ui-g">
+
+  <div class="ui-g-12">
+
+    <div class="inline" >
+        <button mat-raised-button color="accent"  *ngIf="selectedCategory?.id && selectedSubCategory?.id"
+        (click)="getImages()">Get Data</button>
+
+      <!-- <p-button label="Get Data"
+                *ngIf="selectedCategory?.id && selectedSubCategory?.id"
+                (click)="getImages()"></p-button> -->
+    </div>
+    <div class="inline">
+      <p-spinner (onChange)="nextImagesSpinner()" size="4" [(ngModel)]=" this.imageIndex" [min]="0" [max]="this.settingsService.fileTot"></p-spinner>
+    </div>
+    <div class="inline">
+      <p-button label="Next Image"
+                *ngIf="selectedCategory?.id && selectedSubCategory?.id && dataloaded"
+                (click)="nextImages()"></p-button>
+    </div>
+    <div class="inline">
+      <p-button label="Prev Image"
+                *ngIf="selectedCategory?.id && selectedSubCategory?.id  && dataloaded"
+                (click)="prevImages()"></p-button>
+    </div>
+    <div class="inline">
+        <button mat-raised-button color="warn"  *ngIf="selectedCategory?.id && selectedSubCategory?.id  && dataloaded"
+        (click)="delImages()">Delete Image</button>
+
+      <!-- <p-button label="Delete Image"
+                *ngIf="selectedCategory?.id && selectedSubCategory?.id  && dataloaded"
+                (click)="delImages()"></p-button> -->
+    </div>
+    <div class="inline">
+      <p-dropdown [options]="category"
+                  [(ngModel)]="selectedCategory"
+                  placeholder="Select a Category"
+                  optionLabel="name"
+                  scrollHeight="400px"
+                  (onChange)="catChange($event)"
+                  [showClear]="true"></p-dropdown>
+    </div>
+    <div class="inline">
+      <p-dropdown [options]="subCategory"
+                  [(ngModel)]="selectedSubCategory"
+                  placeholder="Select a Sub Category"
+                  optionLabel="name"
+                  scrollHeight="400px"
+                  [showClear]="true"></p-dropdown>
+    </div>
+
+    <div class="inline">
+
+
+        <p-overlayPanel #op>
+
+            <h3 class="first">Image PW</h3>
+                <input type="text"
+                       pInputText
+                       [(ngModel)]="settingsService.pwInput"
+                       (ngModelChange)="valuechange($event)" />
+
+
+
+                       <h3 class="first">Category PW</h3>
+                  <input type="text"
+                         pInputText
+                         [(ngModel)]="settingsService.pwInputCat"
+                         (ngModelChange)="valuechangeCat($event)" />
+
+
+
+        </p-overlayPanel>
+
+        <button type="text" pButton label="Settings" (click)="op.toggle($event)"></button>
+
+
+
+
+    </div>
+
+
+    <!-- </div>
+
+  <div class="ui-g-2"> -->
+    <div class="inline">
+      <div>
+        <label class="switchLabel">Original</label>
+        <p-inputSwitch [(ngModel)]="orgSize"
+                       (onChange)="imageSizeChange($event)"></p-inputSwitch>
+      </div>
+    </div>
+    <!-- </div> -->
+
+    <!-- <div class="ui-g-2"> -->
+    <div class="inline">
+      <div>
+        <label class="switchLabel">Zoom</label>
+        <p-inputSwitch [(ngModel)]="useZoom"
+                       (onChange)="useZoomChange($event)"></p-inputSwitch>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+  <div class="ui-g-12">
+
+    <ngx-image-zoom *ngIf="finalImgSrc && useZoom"
+                    [thumbImage]=finalImgSrc
+                    [fullImage]=finalImgSrc
+                    [zoomMode]="'click'"
+                    [enableScrollZoom]="true"
+                    [maxZoomRatio]="5"
+                    [minZoomRatio]="-5"></ngx-image-zoom>
+
+    <img *ngIf="finalImgSrc && !useZoom"
+         [src]="finalImgSrc"
+         height="{{imageHeight}}" />
+  </div>
+
+</div>
